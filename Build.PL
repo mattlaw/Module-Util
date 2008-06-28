@@ -53,14 +53,9 @@ $class->new(
         module_name => 'Module::Util',
         requires => {
             perl => '5.5.3',
-            # Dependency now removed
-            # 'Text::Trim' => '1.00', # required by pm_which
         },
         build_requires => {
             'Test::More' => 0,
-        },
-        recommends => {
-            'File::Find::Rule' => 0, # required by find_in_namespace()
         },
         script_files => [ glob("scripts/*") ],
         license => 'perl',

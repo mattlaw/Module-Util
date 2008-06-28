@@ -55,11 +55,7 @@ ok(!find_installed($module, 't/lib'), "Module::Util not found in t/lib");
 is(all_installed($module, 'lib'), 1, "Module::Util only found once in lib");
 is(all_installed("::Invalid"), 0, "::Invalid is not installed at all");
 
-SKIP: {
-    # These tests require File::Find::Rule
-    eval { require File::Find::Rule };
-    skip('File::Find::Rule not installed', 2 + @invalid) if $@;
-
+{
     my @in_ns;
     my $dir = catdir(qw( t data ));
     @in_ns = find_in_namespace('NS', $dir);

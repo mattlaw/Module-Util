@@ -3,7 +3,7 @@ package Module::Util;
 use strict;
 use warnings;
 
-our $VERSION = '1.03';
+our $VERSION = '1.04';
 
 =head1 NAME
 
@@ -171,8 +171,6 @@ default).
 
     find_in_namespace("My::Namespace");
 
-The use of this function requires File::Find::Rule to be installed.
-
 Returns unique installed module names under the namespace. Note that this does
 not include the passed-in name, even if it is the name of an installed module.
 
@@ -187,20 +185,16 @@ sub find_in_namespace ($;@) {
 
     if ($ns ne '') {
         $ns_path = module_fs_path($ns) or return;
-        $ns_path =~ s/\.pm$//;
+        $ns_path =~ s/\.pm\z//;
     }
     else {
         $ns_path = '';
     }
 
-    require File::Find::Rule;
-
-    my $rule = File::Find::Rule->file->name(qr(\.pm$));
-
     for my $root (@inc) {
         my $ns_root = rel2abs($ns_path, $root);
 
-        for my $path ($rule->in($ns_root)) {
+        for my $path (_find_modules($root)) {
             my $rel_path = abs2rel($path, rel2abs($root));
             push @out, fs_path_to_module($rel_path);
         }
@@ -208,6 +202,20 @@ sub find_in_namespace ($;@) {
 
     my %seen;
     return grep { !$seen{$_}++ } @out;
+}
+
+sub _find_modules {
+    my @roots = @_;
+
+    require File::Find;
+
+    my @out;
+    File::Find::find({
+        no_chdir => 1,
+        wanted => sub { push @out, $_ if -f $_ && /\.pm\z/ }
+    }, @roots);
+
+    return @out;
 }
 
 # munge a module name into multiple possible installed locations

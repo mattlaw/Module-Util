@@ -1,6 +1,9 @@
 Changes document for Module::Util
 
-1.03
+1.04 - Sat Jun 28 2008
+	- Removed dependency on File::Find::Rule
+
+1.03 - Tue Oct 24 2006
 	- Added -V switch to pm_which, to display versions
         - Made find_in_namespace return unique module names
 

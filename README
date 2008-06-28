@@ -82,8 +82,6 @@ FUNCTIONS
 
         find_in_namespace("My::Namespace");
 
-    The use of this function requires File::Find::Rule to be installed.
-
     Returns unique installed module names under the namespace. Note that
     this does not include the passed-in name, even if it is the name of an
     installed module.
