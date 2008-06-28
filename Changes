@@ -1,0 +1,10 @@
+Changes document for Module::Util
+
+0.02 - next version
+	- Added --version switch to pm_which
+	- Fixed a bug in pm_which's -I switch (extra paths were ignored)
+	- Fixed a bug with pm_which's -p switch
+	- Changed Module::Util's SYNOPSIS a little
+
+0.01 - Thu Nov 10 2005
+	- Initial revision
