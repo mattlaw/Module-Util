@@ -1,0 +1,20 @@
+Changes document for Module::Util
+
+1.03
+	- Added -V switch to pm_which, to display versions
+        - Made find_in_namespace return unique module names
+
+1.02 - Thu Oct 12 2006
+	- Fixed version numbers in this file.
+        - Added a work around for  a potential bug in find_in_namespace on
+          windows when resolving paths against relative directories in the
+          include path
+
+1.01 - Wed Apr 28 2006
+	- Added --version switch to pm_which
+	- Fixed a bug in pm_which's -I switch (extra paths were ignored)
+	- Fixed a bug with pm_which's -p switch
+	- Changed Module::Util's SYNOPSIS a little
+
+1.00 - Thu Nov 10 2005
+	- Initial revision
