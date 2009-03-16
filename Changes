@@ -1,5 +1,8 @@
 Changes document for Module::Util
 
+1.05 - Fri Nov  7 2008
+	- Bugfix RT 40632
+
 1.04 - Sat Jun 28 2008
 	- Removed dependency on File::Find::Rule
 

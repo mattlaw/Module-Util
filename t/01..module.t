@@ -61,8 +61,8 @@ is(all_installed("::Invalid"), 0, "::Invalid is not installed at all");
     @in_ns = find_in_namespace('NS', $dir);
     is_deeply(\@in_ns, ['NS::One'], 'find_in_namespace');
 
-    @in_ns = find_in_namespace('', $dir);
-    is_deeply(\@in_ns, ['NS::One'], 'find_in_namespace');
+    @in_ns = sort (find_in_namespace('', $dir));
+    is_deeply(\@in_ns, ['NS2::One', 'NS::One'], 'find_in_namespace');
 
     for my $invalid (@invalid) {
         ok(!find_in_namespace($invalid), "'$invalid' is not a valid namespace");

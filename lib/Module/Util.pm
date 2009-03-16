@@ -3,7 +3,7 @@ package Module::Util;
 use strict;
 use warnings;
 
-our $VERSION = '1.04';
+our $VERSION = '1.06';
 
 =head1 NAME
 
@@ -194,7 +194,7 @@ sub find_in_namespace ($;@) {
     for my $root (@inc) {
         my $ns_root = rel2abs($ns_path, $root);
 
-        for my $path (_find_modules($root)) {
+        for my $path (_find_modules($ns_root)) {
             my $rel_path = abs2rel($path, rel2abs($root));
             push @out, fs_path_to_module($rel_path);
         }
@@ -391,6 +391,10 @@ perldoc -f require
 =head1 AUTHOR
 
 Matt Lawrence E<lt>mattlaw@cpan.orgE<gt>
+
+=head1 THANKS
+
+Alexander Kühne and Adrian Lai for submitting patches.
 
 =head1 COPYRIGHT
 
