@@ -35,6 +35,7 @@ paths.
 
 use Exporter;
 use File::Spec::Functions qw( catfile rel2abs abs2rel splitpath splitdir );
+use File::Find;
 
 =head1 EXPORTS
 
@@ -207,7 +208,7 @@ sub find_in_namespace ($;@) {
 sub _find_modules {
     my @roots = @_;
 
-    require File::Find;
+    no warnings qw( File::Find );
 
     my @out;
     File::Find::find({

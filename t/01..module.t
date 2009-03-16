@@ -2,7 +2,7 @@ use strict;
 use warnings;
 
 use File::Spec::Functions qw( catfile catdir );
-use Test::More tests => 42;
+use Test::More tests => 43;
 
 our $module;
 BEGIN {
@@ -61,8 +61,8 @@ is(all_installed("::Invalid"), 0, "::Invalid is not installed at all");
     @in_ns = find_in_namespace('NS', $dir);
     is_deeply(\@in_ns, ['NS::One'], 'find_in_namespace');
 
-    @in_ns = sort (find_in_namespace('', $dir));
-    is_deeply(\@in_ns, ['NS2::One', 'NS::One'], 'find_in_namespace');
+    @in_ns = find_in_namespace('', $dir);
+    is_deeply([ sort @in_ns ], ['NS2::One', 'NS::One'], 'find_in_namespace');
 
     for my $invalid (@invalid) {
         ok(!find_in_namespace($invalid), "'$invalid' is not a valid namespace");
@@ -78,6 +78,16 @@ ok(!path_to_module($module), "path_to_module($module) fails");
 # should fail on an absolute path too.
 $path = find_installed($module) || '';
 ok(!path_to_module($path), "path_to_module($path) fails");
+
+{
+    my @warnings;
+    local $SIG{__WARN__} = sub { push @warnings, @_ };
+
+    find_in_namespace('', catdir(qw( fake path )));
+    ok !@warnings, 'no warnings generated when searching in missing path'
+        or diag join("\n", @warnings);
+}
+
 
 __END__
 
