@@ -146,6 +146,13 @@ FUNCTIONS
 
     Returns undef if the name is not valid.
 
+  module_name_parts
+        @parts = module_name_parts($module);
+
+    Returns a list of name parts for the given module.
+
+        module_name_parts('Acme::Example); # ('Acme', 'Example')
+
 BUGS
     None known. Please report any found.
 
@@ -165,7 +172,7 @@ AUTHOR
     Matt Lawrence <mattlaw@cpan.org>
 
 THANKS
-    Alexander Kühne and Adrian Lai for submitting patches.
+    Alexander Kühne, Adrian Lai and Daniel Lukasiak for submitting patches.
 
 COPYRIGHT
     Copyright 2005 Matt Lawrence, All Rights Reserved.

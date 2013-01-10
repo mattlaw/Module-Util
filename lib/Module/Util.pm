@@ -3,7 +3,7 @@ package Module::Util;
 use strict;
 use warnings;
 
-our $VERSION = '1.08';
+our $VERSION = '1.09';
 
 =encoding UTF-8
 
@@ -415,7 +415,7 @@ Matt Lawrence E<lt>mattlaw@cpan.orgE<gt>
 
 =head1 THANKS
 
-Alexander Kühne and Adrian Lai for submitting patches.
+Alexander Kühne, Adrian Lai and Daniel Lukasiak for submitting patches.
 
 =head1 COPYRIGHT
 
