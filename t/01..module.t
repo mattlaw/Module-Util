@@ -2,7 +2,7 @@ use strict;
 use warnings;
 
 use File::Spec::Functions qw( catfile catdir );
-use Test::More tests => 43;
+use Test::More tests => 44;
 
 our $module;
 BEGIN {
@@ -78,6 +78,9 @@ ok(!path_to_module($module), "path_to_module($module) fails");
 # should fail on an absolute path too.
 $path = find_installed($module) || '';
 ok(!path_to_module($path), "path_to_module($path) fails");
+
+my @parts = module_name_parts( 'One::Two::Three' );
+is_deeply( \@parts, [qw(One Two Three)] );
 
 SKIP: {
     skip "No warnings suppression on perl < 5.8", 1 unless $] >= 5.008;
