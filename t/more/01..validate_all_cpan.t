@@ -21,42 +21,13 @@ BEGIN {
     use_ok('Module::Util', qw( is_valid_module_name ));
 }
 
-# some pragmata that are valid but fail really_valid
-my @known_valid = qw(
-    open
-    if
-    sort
-);
-
-# build a regex to recognise the names above.
-my $known_valid = do { local $" = '|'; qr{^(?:@known_valid)$} };
-
 # Check that the module name is really valid.
 # Not all modules reported by CPAN are!
 sub really_valid ($) {
     my $module = shift;
 
-    return 1 if $module =~ $known_valid;
-
-    # Check syntax using another perl interpreter. Very time consuming!
-    my($in, $out, $err);
-    my $pid = open3($in, $out, $err, $^X, '-c', '-e', "require $module")
-        or die "Couldn't run $^X: $!";
-
-    close $in;
-    close $err if defined $err;
-
-    my $line = <$out>;
-    close $out;
-
-    waitpid($pid, 0);
-
-    # if we see syntax OK, the module name must be valid!
-    my $valid = $line =~ /syntax OK/;
-
-    # diag "$line: $valid";
-
-    return $valid
+    eval "package $module";
+    return !$@;
 }
 
 for my $module (@modules) {
