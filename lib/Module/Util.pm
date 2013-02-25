@@ -208,7 +208,8 @@ sub find_in_namespace ($;@) {
 sub _find_modules {
     my @roots = @_;
 
-    no warnings qw( File::Find );
+    # versions of File::Find from earlier perls don't have this feature
+    BEGIN { unimport warnings qw( File::Find ) if $] >= 5.008 }
 
     my @out;
     File::Find::find({

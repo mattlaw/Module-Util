@@ -79,7 +79,9 @@ ok(!path_to_module($module), "path_to_module($module) fails");
 $path = find_installed($module) || '';
 ok(!path_to_module($path), "path_to_module($path) fails");
 
-{
+SKIP: {
+    skip "No warnings suppression on perl < 5.8", 1 unless $] >= 5.008;
+
     my @warnings;
     local $SIG{__WARN__} = sub { push @warnings, @_ };
 
