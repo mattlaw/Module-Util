@@ -1,5 +1,8 @@
 Changes document for Module::Util
 
+1.08 - Mon May 28 2012
+	- Added an explicit =encoding directive to avoid pod errors
+
 1.07 - Tue Apr  7 2009
 	- No changes since 1.06
 

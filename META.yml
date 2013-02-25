@@ -1,21 +1,24 @@
 ---
-name: Module-Util
-version: 1.07
+abstract: 'Module name tools and transformations'
 author:
   - 'Matt Lawrence E<lt>mattlaw@cpan.orgE<gt>'
-abstract: Module name tools and transformations
-license: perl
-resources:
-  license: http://dev.perl.org/licenses/
-requires:
-  perl: 5.5.3
 build_requires:
   Test::More: 0
+configure_requires:
+  Module::Build: 0.4
+dynamic_config: 1
+generated_by: 'Module::Build version 0.4, CPAN::Meta::Converter version 2.120530'
+license: perl
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: Module-Util
 provides:
   Module::Util:
     file: lib/Module/Util.pm
-    version: 1.07
-generated_by: Module::Build version 0.2808
-meta-spec:
-  url: http://module-build.sourceforge.net/META-spec-v1.2.html
-  version: 1.2
+    version: 1.08
+requires:
+  perl: v5.5.3
+resources:
+  license: http://dev.perl.org/licenses/
+version: 1.08

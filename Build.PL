@@ -57,9 +57,12 @@ $class->new(
         build_requires => {
             'Test::More' => 0,
         },
+        configure_requires => {
+            'Module::Build' => '0.40',
+        },
         script_files => [ glob("scripts/*") ],
         license => 'perl',
-        create_makefile_pl => 'passthrough',
+        create_makefile_pl => 'small',
         create_readme => 1,
     )->create_build_script;
 

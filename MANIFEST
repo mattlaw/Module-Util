@@ -11,3 +11,4 @@ t/99..pod.t
 t/data/NS/One.pm
 t/data/NS2/One.pm
 t/more/01..validate_all_cpan.t
+META.json

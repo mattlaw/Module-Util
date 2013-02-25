@@ -3,7 +3,9 @@ package Module::Util;
 use strict;
 use warnings;
 
-our $VERSION = '1.07';
+our $VERSION = '1.08';
+
+=encoding UTF-8
 
 =head1 NAME
 
