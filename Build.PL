@@ -64,5 +64,10 @@ $class->new(
         license => 'perl',
         create_makefile_pl => 'small',
         create_readme => 1,
+        meta_merge => {
+            resources => {
+                repository => 'https://github.com/mattlaw/Module-Util',
+            },
+        },
     )->create_build_script;
 
